@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
   const CustomBottomNavigationBar({super.key});
@@ -13,39 +12,40 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
-    return SalomonBottomBar(
-      currentIndex: selectedIndex,
-      selectedItemColor: const Color(0xff6200ee),
-      unselectedItemColor: const Color(0xff757575),
-      onTap: (index) {
+    return NavigationBar(
+      animationDuration: const Duration(seconds: 1),
+      selectedIndex: selectedIndex,
+      onDestinationSelected: (index) {
         setState(() {
           selectedIndex = index;
         });
       },
-      items: _navBarItems
+      destinations: _navBarItems,
     );
   }
 }
 
-final _navBarItems = [
-  SalomonBottomBarItem(
-    icon: const Icon(Icons.home),
-    title: const Text("Home"),
-    selectedColor: Colors.purple,
+const _navBarItems = [
+  NavigationDestination(
+    icon: Icon(Icons.home_outlined),
+    selectedIcon: Icon(Icons.home_rounded),
+    label: 'Home',
   ),
-  SalomonBottomBarItem(
-    icon: const Icon(Icons.favorite_border),
-    title: const Text("Likes"),
-    selectedColor: Colors.pink,
+  NavigationDestination(
+    icon: Icon(Icons.bookmark_border_outlined),
+    selectedIcon: Icon(Icons.bookmark_rounded),
+    label: 'Bookmarks',
   ),
-  SalomonBottomBarItem(
-    icon: const Icon(Icons.search),
-    title: const Text("Search"),
-    selectedColor: Colors.orange,
+  NavigationDestination(
+    icon: Icon(Icons.shopping_bag_outlined),
+    selectedIcon: Icon(Icons.shopping_bag),
+    label: 'Cart',
   ),
-  SalomonBottomBarItem(
-    icon: const Icon(Icons.person),
-    title: const Text("Profile"),
-    selectedColor: Colors.teal,
+  NavigationDestination(
+    icon: Icon(Icons.person_outline_rounded),
+    selectedIcon: Icon(Icons.person_rounded),
+    label: 'Profile',
   ),
 ];
+
+
