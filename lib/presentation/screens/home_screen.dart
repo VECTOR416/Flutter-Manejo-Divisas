@@ -19,13 +19,14 @@ class HomeScreen extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  _CardType1(label: 'label', elevation: 10),
+                  _CardType1(label: 'Total Gastado', elevation: 10),
                   Row(
                     children: [
-                      Expanded(child: _CardType1(label: 'label', elevation: 10)),
-                      Expanded(child: _CardType1(label: 'label', elevation: 10)),
+                      Expanded(child: _CardType1(label: 'Ingresos', elevation: 10)),
+                      Expanded(child: _CardType1(label: 'Egresos', elevation: 10)),
                     ],
-                  )
+                  ),
+                  Expanded(flex: 0, child: _CardType1(label: "Prueba", elevation: 10))
                 ],
               ),
             ),
