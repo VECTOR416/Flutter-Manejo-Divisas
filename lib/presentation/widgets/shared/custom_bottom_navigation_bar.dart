@@ -13,6 +13,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   @override
   Widget build(BuildContext context) {
     return NavigationBar(
+      
       animationDuration: const Duration(seconds: 1),
       selectedIndex: selectedIndex,
       onDestinationSelected: (index) {
@@ -29,7 +30,7 @@ const _navBarItems = [
   NavigationDestination(
     icon: Icon(Icons.home_outlined),
     selectedIcon: Icon(Icons.home_rounded),
-    label: 'Home',
+    label: 'Home'
   ),
   NavigationDestination(
     icon: Icon(Icons.bookmark_border_outlined),
