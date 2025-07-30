@@ -18,6 +18,7 @@ class SecundaryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final Color mainColor = (isIncome) ? Colors.green : Colors.red;
     final IconData icono = (isIncome) ? Icons.trending_up : Icons.trending_down;
+    final Color backgroundColor = (isIncome) ? Color.fromRGBO(223, 251, 236, 255) : Color.fromRGBO(253, 232, 232, 255);
     return Card(
       elevation: elevation,
       clipBehavior: Clip.hardEdge,
@@ -26,6 +27,7 @@ class SecundaryCard extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
           decoration: BoxDecoration(
+            color: backgroundColor,
             border: Border.all(color: mainColor, width: 2),
             borderRadius: BorderRadius.all(Radius.circular(12))
           ),
