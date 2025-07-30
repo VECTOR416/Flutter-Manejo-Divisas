@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:manejo_divisas/presentation/widgets/home-screen/secundary_cards.dart';
 import 'package:manejo_divisas/presentation/widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -9,11 +10,30 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[200],
-      body: SafeArea(child: Column(children: [_MainAppbar()])),
+      body: SafeArea(child: Column(children: [
+        _MainAppbar(),
+        SizedBox(height: 8),
+        Padding(
+          padding: EdgeInsets.only(left: 8, right: 8),
+          child: Row(
+            children: [
+              Expanded(child: SecundaryCard(label: 'Ingresos:', money: 548.45,  elevation: 5, isIncome: true)),
+              Expanded(child: SecundaryCard(label: 'Egresos:', money: 357.76,  elevation: 5, isIncome: false))
+            ],
+          ),
+        )
+        ])),
       bottomNavigationBar: CustomBottomNavigationBar(),
     );
   }
 }
+
+
+
+
+
+
+
 
 class _MainAppbar extends StatelessWidget {
   const _MainAppbar();
