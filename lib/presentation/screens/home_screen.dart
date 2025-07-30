@@ -28,13 +28,6 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-
-
-
-
-
-
-
 class _MainAppbar extends StatelessWidget {
   const _MainAppbar();
 
@@ -110,8 +103,8 @@ class _SecundaryContainer extends StatelessWidget {
           spacing: 4,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.trending_up, color: Colors.green[300]),
-            Text("+12.5% este mes", style: TextStyle(color: Colors.green[300]))
+            Icon(Icons.trending_up, color: Colors.green[300], weight: 5),
+            Text("+12.5% este mes", style: TextStyle(color: Colors.green[300], fontWeight: FontWeight.bold))
           ],
         )
         ]
