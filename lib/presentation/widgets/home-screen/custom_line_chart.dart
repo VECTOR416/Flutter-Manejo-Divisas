@@ -1,276 +1,141 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-class CustomLineChart extends StatefulWidget {
+class CustomLineChart extends StatelessWidget {
   const CustomLineChart({super.key});
 
   @override
-  State<CustomLineChart> createState() => _CustomLineChartState();
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.fromLTRB(12, 24, 18, 12),
+      decoration: BoxDecoration(
+        color: Color(0xFF6e7580),
+        borderRadius: BorderRadius.all(Radius.circular(16))
+      ),
+      child: Stack(
+        children: <Widget>[
+          AspectRatio(
+            aspectRatio: 1.70,
+            child: LineChart(
+              mainData()
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
 
-class _CustomLineChartState extends State<CustomLineChart> {
-  List<Color> gradientColors = [Colors.cyan, Colors.blue];
-
-  bool showAvg = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        AspectRatio(
-          aspectRatio: 1.70,
-          child: Padding(
-            padding: const EdgeInsets.only(
-              right: 18,
-              left: 12,
-              top: 24,
-              bottom: 12,
-            ),
-            child: LineChart(showAvg ? avgData() : mainData()),
-          ),
+LineChartData mainData() {
+  return LineChartData(
+    gridData: FlGridData(
+      show: true,
+      drawVerticalLine: true,
+      horizontalInterval: 1,
+      verticalInterval: 1,
+      drawHorizontalLine: true,
+      getDrawingHorizontalLine: (value) => FlLine(color: Colors.blue),
+      getDrawingVerticalLine: (value) => FlLine(color: Colors.blue),
+    ),
+    titlesData: FlTitlesData(
+      show: true,
+      rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+      topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+      bottomTitles: AxisTitles(
+        sideTitles: SideTitles(
+          showTitles: true,
+          reservedSize: 30,
+          interval: 1,
+          getTitlesWidget: bottomTitleWidgets,
         ),
-        SizedBox(
-          width: 60,
-          height: 34,
-          child: TextButton(
-            onPressed: () {
-              setState(() {
-                showAvg = !showAvg;
-              });
-            },
-            child: Text(
-              'avg',
-              style: TextStyle(
-                fontSize: 12,
-                color:
-                    showAvg
-                        ? Colors.white.withValues(alpha: 0.5)
-                        : Colors.white,
-              ),
-            ),
-          ),
+      ),
+      leftTitles: AxisTitles(
+        sideTitles: SideTitles(
+          showTitles: true,
+          interval: 1,
+          getTitlesWidget: leftTitleWidgets,
+          reservedSize: 30,
         ),
-      ],
-    );
+      ),
+    ),
+    borderData: FlBorderData(
+      show: true,
+      border: Border.all(color: const Color(0xFF5337F5)),
+    ),
+    lineBarsData: [
+      LineChartBarData(
+        color: Colors.green,
+        spots: const [
+          FlSpot(0, 0),
+          FlSpot(1, 4),
+          FlSpot(2, 3),
+          FlSpot(3, 7),
+          FlSpot(4, 9),
+          FlSpot(5, 4),
+          FlSpot(6, 7),
+        ],
+        isCurved: true,
+        barWidth: 5,
+        isStrokeCapRound: true,
+        dotData: const FlDotData(show: true),
+
+      ),
+    ],
+  );
+}
+
+Widget bottomTitleWidgets(double value, TitleMeta meta) {
+  const style = TextStyle(fontWeight: FontWeight.bold, fontSize: 9);
+  Widget text;
+  switch (value.toInt()) {
+    case 0:
+      text = const Text('LUN', style: style);
+      break;
+    case 1:
+      text = const Text('MAR', style: style);
+      break;
+    case 2:
+      text = const Text('MIE', style: style);
+      break;
+    case 3:
+      text = const Text('JUE', style: style);
+      break;
+    case 4:
+      text = const Text('VIE', style: style);
+      break;
+    case 5:
+      text = const Text('SAB', style: style);
+      break;
+    case 6:
+      text = const Text('DOM', style: style);
+      break;
+    default:
+      text = const Text('', style: style);
+      break;
   }
 
-  Widget bottomTitleWidgets(double value, TitleMeta meta) {
-    const style = TextStyle(fontWeight: FontWeight.bold, fontSize: 9);
-    Widget text;
-    switch (value.toInt()) {
-      case 0:
-        text = const Text('LUN', style: style);
-        break;
-      case 1:
-        text = const Text('MAR', style: style);
-        break;
-      case 2:
-        text = const Text('MIE', style: style);
-        break;
-      case 3:
-        text = const Text('JUE', style: style);
-        break;
-      case 4:
-        text = const Text('VIE', style: style);
-        break;
-      case 5:
-        text = const Text('SAB', style: style);
-        break;
-      case 6:
-        text = const Text('DOM', style: style);
-        break;
-      default:
-        text = const Text('', style: style);
-        break;
-    }
+  return SideTitleWidget(meta: meta, child: text);
+}
 
-    return SideTitleWidget(meta: meta, child: text);
+Widget leftTitleWidgets(double value, TitleMeta meta) {
+  const style = TextStyle(fontWeight: FontWeight.bold, fontSize: 10);
+  String text;
+  switch (value.toInt()) {
+    case 0:
+      text = '0k';
+      break;
+    case 3:
+      text = '30k';
+      break;
+    case 6:
+      text = '60k';
+      break;
+    case 9:
+      text = '90k';
+      break;
+    default:
+      return Container();
   }
 
-  Widget leftTitleWidgets(double value, TitleMeta meta) {
-    const style = TextStyle(fontWeight: FontWeight.bold, fontSize: 10);
-    String text;
-    switch (value.toInt()) {
-      case 0:
-        text = '0k';
-        break;
-      case 3:
-        text = '30k';
-        break;
-      case 6:
-        text = '60k';
-        break;
-      case 9:
-        text = '90k';
-        break;
-      default:
-        return Container();
-    }
-
-    return Text(text, style: style, textAlign: TextAlign.center);
-  }
-
-  LineChartData mainData() {
-    return LineChartData(
-      gridData: FlGridData(
-        show: true,
-        drawVerticalLine: true,
-        horizontalInterval: 1,
-        verticalInterval: 1,
-        getDrawingHorizontalLine: (value) {
-          return const FlLine(color: Color(0xFF5337F5), strokeWidth: 1);
-        },
-        getDrawingVerticalLine: (value) {
-          return const FlLine(color: Color(0xFF5337F5), strokeWidth: 1);
-        },
-      ),
-      titlesData: FlTitlesData(
-        show: true,
-        rightTitles: const AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
-        topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-        bottomTitles: AxisTitles(
-          sideTitles: SideTitles(
-            showTitles: true,
-            reservedSize: 30,
-            interval: 1,
-            getTitlesWidget: bottomTitleWidgets,
-          ),
-        ),
-        leftTitles: AxisTitles(
-          sideTitles: SideTitles(
-            showTitles: true,
-            interval: 1,
-            getTitlesWidget: leftTitleWidgets,
-            reservedSize: 42,
-          ),
-        ),
-      ),
-      borderData: FlBorderData(
-        show: true,
-        border: Border.all(color: const Color(0xff37434d)),
-      ),
-      lineBarsData: [
-        LineChartBarData(
-          spots: const [
-            FlSpot(0, 0),
-            FlSpot(1, 4),
-            FlSpot(2, 3),
-            FlSpot(3, 7),
-            FlSpot(4, 9),
-            FlSpot(5, 4),
-            FlSpot(6, 7),
-          ],
-          isCurved: true,
-          gradient: LinearGradient(colors: gradientColors),
-          barWidth: 5,
-          isStrokeCapRound: true,
-          dotData: const FlDotData(show: false),
-          belowBarData: BarAreaData(
-            show: true,
-            gradient: LinearGradient(
-              colors:
-                  gradientColors
-                      .map((color) => color.withValues(alpha: 0.3))
-                      .toList(),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
-  LineChartData avgData() {
-    return LineChartData(
-      lineTouchData: const LineTouchData(enabled: false),
-      gridData: FlGridData(
-        show: true,
-        drawHorizontalLine: true,
-        verticalInterval: 1,
-        horizontalInterval: 1,
-        getDrawingVerticalLine: (value) {
-          return const FlLine(color: Color(0xFF5337F5), strokeWidth: 1);
-        },
-        getDrawingHorizontalLine: (value) {
-          return const FlLine(color: Color(0xFF5337F5), strokeWidth: 1);
-        },
-      ),
-      titlesData: FlTitlesData(
-        show: true,
-        bottomTitles: AxisTitles(
-          sideTitles: SideTitles(
-            showTitles: true,
-            reservedSize: 30,
-            getTitlesWidget: bottomTitleWidgets,
-            interval: 1,
-          ),
-        ),
-        leftTitles: AxisTitles(
-          sideTitles: SideTitles(
-            showTitles: true,
-            getTitlesWidget: leftTitleWidgets,
-            reservedSize: 42,
-            interval: 1,
-          ),
-        ),
-        topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-        rightTitles: const AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
-      ),
-      borderData: FlBorderData(
-        show: true,
-        border: Border.all(color: const Color(0xFF5337F5)),
-      ),
-      minX: 0,
-      maxX: 11,
-      minY: 0,
-      maxY: 6,
-      lineBarsData: [
-        LineChartBarData(
-          spots: const [
-            FlSpot(0, 3.44),
-            FlSpot(2.6, 3.44),
-            FlSpot(4.9, 3.44),
-            FlSpot(6.8, 3.44),
-            FlSpot(8, 3.44),
-            FlSpot(9.5, 3.44),
-            FlSpot(11, 3.44),
-          ],
-          isCurved: true,
-          gradient: LinearGradient(
-            colors: [
-              ColorTween(
-                begin: gradientColors[0],
-                end: gradientColors[1],
-              ).lerp(0.2)!,
-              ColorTween(
-                begin: gradientColors[0],
-                end: gradientColors[1],
-              ).lerp(0.2)!,
-            ],
-          ),
-          barWidth: 5,
-          isStrokeCapRound: true,
-          dotData: const FlDotData(show: false),
-          belowBarData: BarAreaData(
-            show: true,
-            gradient: LinearGradient(
-              colors: [
-                ColorTween(
-                  begin: gradientColors[0],
-                  end: gradientColors[1],
-                ).lerp(0.2)!.withValues(alpha: 0.1),
-                ColorTween(
-                  begin: gradientColors[0],
-                  end: gradientColors[1],
-                ).lerp(0.2)!.withValues(alpha: 0.1),
-              ],
-            ),
-          ),
-        ),
-      ],
-    );
-  }
+  return Text(text, style: style, textAlign: TextAlign.center);
 }

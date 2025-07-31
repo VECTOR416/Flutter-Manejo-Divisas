@@ -40,7 +40,7 @@ class HomeScreen extends StatelessWidget {
             ),
             SizedBox(height: 8),
             Padding(
-              padding: EdgeInsets.fromLTRB(8, 16, 8, 16),
+              padding: EdgeInsets.fromLTRB(0, 16, 0, 16),
               child: CustomLineChart(),
             )
           ],
