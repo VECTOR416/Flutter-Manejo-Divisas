@@ -10,19 +10,42 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[200],
-      body: SafeArea(child: Column(children: [
-        _MainAppbar(),
-        SizedBox(height: 8),
-        Padding(
-          padding: EdgeInsets.only(left: 8, right: 8),
-          child: Row(
-            children: [
-              Expanded(child: SecundaryCard(label: 'Ingresos:', money: 548.45,  elevation: 5, isIncome: true)),
-              Expanded(child: SecundaryCard(label: 'Egresos:', money: 357.76,  elevation: 5, isIncome: false))
-            ],
-          ),
-        )
-        ])),
+      body: SafeArea(
+        child: Column(
+          children: [
+            _MainAppbar(),
+            SizedBox(height: 8),
+            Padding(
+              padding: EdgeInsets.only(left: 8, right: 8),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: SecundaryCard(
+                      label: 'Ingresos:',
+                      money: 548.45,
+                      elevation: 5,
+                      isIncome: true,
+                    ),
+                  ),
+                  Expanded(
+                    child: SecundaryCard(
+                      label: 'Egresos:',
+                      money: 357.76,
+                      elevation: 5,
+                      isIncome: false,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 8),
+            Padding(
+              padding: EdgeInsets.fromLTRB(8, 16, 8, 16),
+              child: CustomLineChart(),
+            )
+          ],
+        ),
+      ),
       bottomNavigationBar: CustomBottomNavigationBar(),
     );
   }
@@ -69,7 +92,7 @@ class _MainAppbar extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 16),
-          _SecundaryContainer()
+          _SecundaryContainer(),
         ],
       ),
     );
@@ -86,28 +109,34 @@ class _SecundaryContainer extends StatelessWidget {
       padding: EdgeInsets.all(24),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(24)),
-        color: Color(0xFF5d52f8)
+        color: Color(0xFF5d52f8),
       ),
       child: Column(
         children: [
           Text('Balance Total:', style: TextStyle(color: Colors.white)),
           Text(
-          '\$2850.50',
-          style: TextStyle(
-            fontSize: 36,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          )
-        ),
-        Row(
-          spacing: 4,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.trending_up, color: Colors.green[300], weight: 5),
-            Text("+12.5% este mes", style: TextStyle(color: Colors.green[300], fontWeight: FontWeight.bold))
-          ],
-        )
-        ]
+            '\$2850.50',
+            style: TextStyle(
+              fontSize: 36,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+          ),
+          Row(
+            spacing: 4,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.trending_up, color: Colors.green[300], weight: 5),
+              Text(
+                "+12.5% este mes",
+                style: TextStyle(
+                  color: Colors.green[300],
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
