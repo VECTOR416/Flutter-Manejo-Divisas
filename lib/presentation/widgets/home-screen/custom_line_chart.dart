@@ -9,7 +9,7 @@ class CustomLineChart extends StatelessWidget {
     return Container(
       padding: EdgeInsets.fromLTRB(12, 24, 18, 12),
       decoration: BoxDecoration(
-        color: Color(0xFF6e7580),
+        color: Color(0xFFf9f7fe),
         borderRadius: BorderRadius.all(Radius.circular(16))
       ),
       child: Stack(
@@ -33,9 +33,7 @@ LineChartData mainData() {
       drawVerticalLine: true,
       horizontalInterval: 1,
       verticalInterval: 1,
-      drawHorizontalLine: true,
-      getDrawingHorizontalLine: (value) => FlLine(color: Colors.blue),
-      getDrawingVerticalLine: (value) => FlLine(color: Colors.blue),
+      drawHorizontalLine: true
     ),
     titlesData: FlTitlesData(
       show: true,
@@ -64,7 +62,8 @@ LineChartData mainData() {
     ),
     lineBarsData: [
       LineChartBarData(
-        color: Colors.green,
+        preventCurveOverShooting: true,
+        color: Color(0xFF5438f5),
         spots: const [
           FlSpot(0, 0),
           FlSpot(1, 4),
@@ -75,7 +74,25 @@ LineChartData mainData() {
           FlSpot(6, 7),
         ],
         isCurved: true,
-        barWidth: 5,
+        barWidth: 3,
+        isStrokeCapRound: true,
+        dotData: const FlDotData(show: true),
+
+      ),
+      LineChartBarData(
+        preventCurveOverShooting: true,
+        color: Color(0xFFf44235),
+        spots: const [
+          FlSpot(0, 1),
+          FlSpot(1, 5),
+          FlSpot(2, 2),
+          FlSpot(3, 5),
+          FlSpot(4, 2),
+          FlSpot(5, 7),
+          FlSpot(6, 4),
+        ],
+        isCurved: true,
+        barWidth: 3,
         isStrokeCapRound: true,
         dotData: const FlDotData(show: true),
 
@@ -89,25 +106,25 @@ Widget bottomTitleWidgets(double value, TitleMeta meta) {
   Widget text;
   switch (value.toInt()) {
     case 0:
-      text = const Text('LUN', style: style);
+      text = const Text('L', style: style);
       break;
     case 1:
-      text = const Text('MAR', style: style);
+      text = const Text('M', style: style);
       break;
     case 2:
-      text = const Text('MIE', style: style);
+      text = const Text('X', style: style);
       break;
     case 3:
-      text = const Text('JUE', style: style);
+      text = const Text('J', style: style);
       break;
     case 4:
-      text = const Text('VIE', style: style);
+      text = const Text('V', style: style);
       break;
     case 5:
-      text = const Text('SAB', style: style);
+      text = const Text('S', style: style);
       break;
     case 6:
-      text = const Text('DOM', style: style);
+      text = const Text('D', style: style);
       break;
     default:
       text = const Text('', style: style);
