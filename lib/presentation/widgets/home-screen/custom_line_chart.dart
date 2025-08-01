@@ -28,6 +28,15 @@ class CustomLineChart extends StatelessWidget {
 
 LineChartData mainData() {
   return LineChartData(
+    lineTouchData: LineTouchData(
+      touchTooltipData: LineTouchTooltipData(
+        getTooltipColor: (touchedSpot) {
+          return Color(0xFFf9f7fe);
+        },
+        
+        tooltipBorder: BorderSide(color: Color(0xFF9b7372))
+      )
+    ),
     gridData: FlGridData(
       show: true,
       drawVerticalLine: true,
