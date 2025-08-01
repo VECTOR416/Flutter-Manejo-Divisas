@@ -7,19 +7,31 @@ class CustomLineChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.fromLTRB(12, 24, 18, 12),
+      padding: EdgeInsets.fromLTRB(12, 8, 18, 12),
       decoration: BoxDecoration(
         color: Color(0xFFf9f7fe),
-        borderRadius: BorderRadius.all(Radius.circular(16))
+        borderRadius: BorderRadius.all(Radius.circular(16)),
       ),
-      child: Stack(
-        children: <Widget>[
-          AspectRatio(
-            aspectRatio: 1.70,
-            child: LineChart(
-              mainData()
-            ),
+      child: Column(
+        children: [
+          Text("Gastos vs Ingresos", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Color(0xFF5337F5))),
+          Text("Resumen Semanal", style: TextStyle(color: Color(0xFF5337F5))),
+          SizedBox(height: 8),
+          Stack(
+            children: <Widget>[
+              AspectRatio(aspectRatio: 1.70, child: LineChart(mainData())),
+            ],
           ),
+          Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.arrow_circle_up, size: 16, color: const Color(0xFF5337F5)),
+              Text("Ingresos", style: TextStyle(color: const Color(0xFF5337F5), fontWeight: FontWeight.bold)),
+              SizedBox(width: 16),
+              Icon(Icons.arrow_circle_down, size: 16 , color: const Color(0xFFf44235)),
+              Text("Egresos", style: TextStyle(color: const Color(0xFFf44235), fontWeight: FontWeight.bold))
+            ],
+          )
         ],
       ),
     );
@@ -33,16 +45,15 @@ LineChartData mainData() {
         getTooltipColor: (touchedSpot) {
           return Color(0xFFf9f7fe);
         },
-        
-        tooltipBorder: BorderSide(color: Color(0xFF9b7372))
-      )
+        tooltipBorder: BorderSide(color: Color(0xFF5337F5)),
+      ),
     ),
     gridData: FlGridData(
       show: true,
       drawVerticalLine: true,
       horizontalInterval: 1,
       verticalInterval: 1,
-      drawHorizontalLine: true
+      drawHorizontalLine: true,
     ),
     titlesData: FlTitlesData(
       show: true,
@@ -86,7 +97,6 @@ LineChartData mainData() {
         barWidth: 3,
         isStrokeCapRound: true,
         dotData: const FlDotData(show: true),
-
       ),
       LineChartBarData(
         preventCurveOverShooting: true,
@@ -104,7 +114,6 @@ LineChartData mainData() {
         barWidth: 3,
         isStrokeCapRound: true,
         dotData: const FlDotData(show: true),
-
       ),
     ],
   );

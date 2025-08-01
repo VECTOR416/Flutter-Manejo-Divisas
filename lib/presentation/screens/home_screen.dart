@@ -42,7 +42,8 @@ class HomeScreen extends StatelessWidget {
             Padding(
               padding: EdgeInsets.fromLTRB(0, 16, 0, 16),
               child: CustomLineChart(),
-            )
+            ),
+            
           ],
         ),
       ),
