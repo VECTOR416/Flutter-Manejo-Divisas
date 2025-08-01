@@ -13,37 +13,13 @@ class HomeScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            _MainAppbar(),
+            _MainTitle(),
             SizedBox(height: 8),
+            _CardsContainer(),
             Padding(
-              padding: EdgeInsets.only(left: 8, right: 8),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: SecundaryCard(
-                      label: 'Ingresos:',
-                      money: 548.45,
-                      elevation: 5,
-                      isIncome: true,
-                    ),
-                  ),
-                  Expanded(
-                    child: SecundaryCard(
-                      label: 'Egresos:',
-                      money: 357.76,
-                      elevation: 5,
-                      isIncome: false,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 8),
-            Padding(
-              padding: EdgeInsets.fromLTRB(0, 16, 0, 16),
+              padding: EdgeInsets.fromLTRB(0, 8, 0, 16),
               child: CustomLineChart(),
             ),
-            
           ],
         ),
       ),
@@ -52,8 +28,8 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class _MainAppbar extends StatelessWidget {
-  const _MainAppbar();
+class _MainTitle extends StatelessWidget {
+  const _MainTitle();
 
   @override
   Widget build(BuildContext context) {
@@ -93,15 +69,46 @@ class _MainAppbar extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 16),
-          _SecundaryContainer(),
+          _BalanceContainer(),
         ],
       ),
     );
   }
 }
 
-class _SecundaryContainer extends StatelessWidget {
-  const _SecundaryContainer();
+class _CardsContainer extends StatelessWidget {
+  const _CardsContainer();
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(left: 8, right: 8),
+      child: Row(
+        children: [
+          Expanded(
+            child: SecundaryCard(
+              label: 'Ingresos:',
+              money: 548.45,
+              elevation: 5,
+              isIncome: true,
+            ),
+          ),
+          Expanded(
+            child: SecundaryCard(
+              label: 'Egresos:',
+              money: 357.76,
+              elevation: 5,
+              isIncome: false,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _BalanceContainer extends StatelessWidget {
+  const _BalanceContainer();
 
   @override
   Widget build(BuildContext context) {
