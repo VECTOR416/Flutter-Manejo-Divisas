@@ -8,6 +8,12 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        backgroundColor: Color(0xFF5337F5),
+      ),
+      appBar: AppBar(
+        backgroundColor: Colors.grey[200],
+      ),
       backgroundColor: Colors.grey[200],
       body: SingleChildScrollView(
         child: SafeArea(
