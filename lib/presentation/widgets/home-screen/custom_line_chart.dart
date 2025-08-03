@@ -6,33 +6,31 @@ class CustomLineChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.fromLTRB(12, 8, 18, 12),
-      decoration: BoxDecoration(
-        color: Color(0xFFf9f7fe),
-        borderRadius: BorderRadius.all(Radius.circular(16)),
-      ),
-      child: Column(
-        children: [
-          Text("Gastos vs Ingresos", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Color(0xFF5337F5))),
-          Text("Resumen Semanal", style: TextStyle(color: Color(0xFF5337F5))),
-          SizedBox(height: 8),
-          Stack(
-            children: <Widget>[
-              AspectRatio(aspectRatio: 1.70, child: LineChart(mainData())),
-            ],
-          ),
-          Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.arrow_circle_up, size: 16, color: const Color(0xFF5337F5)),
-              Text("Ingresos", style: TextStyle(color: const Color(0xFF5337F5), fontWeight: FontWeight.bold)),
-              SizedBox(width: 16),
-              Icon(Icons.arrow_circle_down, size: 16 , color: const Color(0xFFf44235)),
-              Text("Egresos", style: TextStyle(color: const Color(0xFFf44235), fontWeight: FontWeight.bold))
-            ],
-          )
-        ],
+    return Card(
+      child: Padding(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          children: [
+            Text("Gastos vs Ingresos", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Color(0xFF5337F5))),
+            Text("Resumen Semanal", style: TextStyle(color: Color(0xFF5337F5))),
+            SizedBox(height: 8),
+            Stack(
+              children: <Widget>[
+                AspectRatio(aspectRatio: 1.70, child: LineChart(mainData())),
+              ],
+            ),
+            Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.arrow_circle_up, size: 16, color: const Color(0xFF5337F5)),
+                Text("Ingresos", style: TextStyle(color: const Color(0xFF5337F5), fontWeight: FontWeight.bold)),
+                SizedBox(width: 16),
+                Icon(Icons.arrow_circle_down, size: 16 , color: const Color(0xFFf44235)),
+                Text("Egresos", style: TextStyle(color: const Color(0xFFf44235), fontWeight: FontWeight.bold))
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
