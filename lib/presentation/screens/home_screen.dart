@@ -20,6 +20,7 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             children: [
               MainTitle(),
+              SizedBox(height: 4),
               CardsContainer(),
               CustomLineChart(),
               BudgetCard()

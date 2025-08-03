@@ -26,8 +26,8 @@ class BudgetCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: const [
                     Text("Presupuesto del Mes",
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-                    Text("Enero 2025", style: TextStyle(color: Colors.grey)),
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Color(0xFF5337F5))),
+                    Text("Enero 2025", style: TextStyle(color: Color(0xFF5337F5))),
                   ],
                 ),
               ],
