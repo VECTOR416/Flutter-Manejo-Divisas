@@ -6,27 +6,29 @@ class CardsContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(left: 8, right: 8),
-      child: Row(
-        children: [
-          Expanded(
-            child: SecundaryCard(
-              label: 'Ingresos:',
-              money: 548.45,
-              elevation: 5,
-              isIncome: true,
+    return Card(
+      child: Padding(
+        padding: EdgeInsets.fromLTRB(8, 8, 8, 8),
+        child: Row(
+          children: [
+            Expanded(
+              child: SecundaryCard(
+                label: 'Ingresos:',
+                money: 548.45,
+                elevation: 5,
+                isIncome: true,
+              ),
             ),
-          ),
-          Expanded(
-            child: SecundaryCard(
-              label: 'Egresos:',
-              money: 357.76,
-              elevation: 5,
-              isIncome: false,
+            Expanded(
+              child: SecundaryCard(
+                label: 'Egresos:',
+                money: 357.76,
+                elevation: 5,
+                isIncome: false,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -20,12 +20,8 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             children: [
               MainTitle(),
-              SizedBox(height: 8),
               CardsContainer(),
-              Padding(
-                padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
-                child: CustomLineChart(),
-              ),
+              CustomLineChart(),
               BudgetCard()
             ],
           ),
