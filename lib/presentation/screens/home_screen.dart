@@ -26,10 +26,7 @@ class HomeScreen extends StatelessWidget {
                 padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
                 child: CustomLineChart(),
               ),
-              DecoratedBox(
-                decoration: BoxDecoration(color: Color(0xFF5337F5)),
-                child: SizedBox(width: double.infinity, height: 500),
-              ),
+              BudgetCard()
             ],
           ),
         ),
