@@ -1,6 +1,6 @@
 import 'package:isar/isar.dart';
 
-//part 'presupuesto.g.dart';
+part 'presupuesto.g.dart';
 
 @collection
 class Presupuesto {

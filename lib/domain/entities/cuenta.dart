@@ -1,6 +1,6 @@
 import 'package:isar/isar.dart';
 
-//part 'cuenta.g.dart';
+part 'cuenta.g.dart';
 
 @collection
 class Cuenta {

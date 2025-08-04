@@ -7,6 +7,9 @@
 .buildlog/
 .history
 
+lib/domain/entities/*.g.dart
+
+
 
 
 # Flutter repo-specific

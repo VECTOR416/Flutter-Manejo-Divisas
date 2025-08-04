@@ -1,6 +1,6 @@
 import 'package:isar/isar.dart';
 
-//part 'transaccion.g.dart';
+part 'transaccion.g.dart';
 
 @collection
 class Transaccion {
