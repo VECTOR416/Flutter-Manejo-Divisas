@@ -1,5 +1,7 @@
 import 'package:isar/isar.dart';
 import 'package:manejo_divisas/domain/datasource/cuenta_datasource.dart';
+import 'package:manejo_divisas/domain/dtos/cuenta/register_cuenta.dart';
+import 'package:manejo_divisas/domain/dtos/cuenta/update_cuenta.dart';
 import 'package:manejo_divisas/domain/entities/cuenta.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -22,29 +24,25 @@ class CuentaDatasourceIsar implements CuentaDatasource{
   }
 
   @override
-  Future<Cuenta> actualizarCuenta(int idCuenta, Cuenta cuenta) async{
-    final isar = await db;
-    // final Cuenta cuentaDB = await isar.writeTxn(() async {
-    //   await isar.cuentas.put(cuenta);
-    // });
-    //return Future.value(isar.cuentas.get(idCuenta));
+  Future<Cuenta> actualizarCuenta(int idCuenta, UpdateCuenta updateCuenta) {
+    // TODO: implement actualizarCuenta
     throw UnimplementedError();
   }
 
   @override
-  Future<Cuenta> crearCuenta(Cuenta cuenta) {
+  Future<Cuenta> crearCuenta(RegisterCuenta registerCuenta) {
     // TODO: implement crearCuenta
     throw UnimplementedError();
   }
 
   @override
-  Future<Cuenta> eliminarCuenta(int idCuenta) {
+  Future<bool> eliminarCuenta(int idCuenta) {
     // TODO: implement eliminarCuenta
     throw UnimplementedError();
   }
 
   @override
-  Future<Cuenta> listarCuentas({int limit = 10, offset = 0}) {
+  Future<List<Cuenta>> listarCuentas({int limit = 10, offset = 0}) {
     // TODO: implement listarCuentas
     throw UnimplementedError();
   }
@@ -54,5 +52,7 @@ class CuentaDatasourceIsar implements CuentaDatasource{
     // TODO: implement obtenerCuenta
     throw UnimplementedError();
   }
+
+  
 
 }
