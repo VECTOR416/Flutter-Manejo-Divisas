@@ -1,10 +1,5 @@
-import 'package:isar/isar.dart';
-
-part 'transaccion.g.dart';
-
-@collection
 class Transaccion {
-  Id id = Isar.autoIncrement;
+  final int id;
   final String descripcion;
   final DateTime fecha;
   final bool estado;

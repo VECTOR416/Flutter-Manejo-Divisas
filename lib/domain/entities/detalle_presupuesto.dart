@@ -1,10 +1,6 @@
-import 'package:isar/isar.dart';
 
-part 'detalle_presupuesto.g.dart';
-
-@collection
 class DetallePresupuesto {
-  Id id = Isar.autoIncrement;
+  final int id;
   final int idPresupuesto;
   final String descripcion;
   final int idCategoria;

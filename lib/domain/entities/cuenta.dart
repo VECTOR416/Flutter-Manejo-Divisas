@@ -1,10 +1,5 @@
-import 'package:isar/isar.dart';
-
-part 'cuenta.g.dart';
-
-@collection
 class Cuenta {
-  Id id = Isar.autoIncrement;
+  final int id;
   final String nombre;
   final bool estado;
   final double total;

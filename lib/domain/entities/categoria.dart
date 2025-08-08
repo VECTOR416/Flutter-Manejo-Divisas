@@ -1,10 +1,6 @@
-import 'package:isar/isar.dart';
 
-part 'categoria.g.dart';
-
-@collection
 class Categoria {
-  Id id = Isar.autoIncrement;
+  final int id;
   final String nombre;
   final int tipoCategoria;
   final bool estado;

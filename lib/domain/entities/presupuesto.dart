@@ -1,10 +1,6 @@
-import 'package:isar/isar.dart';
 
-part 'presupuesto.g.dart';
-
-@collection
 class Presupuesto {
-  Id id = Isar.autoIncrement;
+  final int id;
   final String nombre;
   final DateTime fechaInicio;
   final DateTime fechaFinalizacion;
