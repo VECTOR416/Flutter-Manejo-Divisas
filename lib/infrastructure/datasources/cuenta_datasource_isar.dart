@@ -6,9 +6,7 @@ import 'package:manejo_divisas/domain/entities/cuenta.dart';
 import 'package:path_provider/path_provider.dart';
 
 class CuentaDatasourceIsar implements CuentaDatasource{
-
   late Future<Isar> db;
-
   CuentaDatasourceIsar(){
     db = openDB();
   }
@@ -23,6 +21,15 @@ class CuentaDatasourceIsar implements CuentaDatasource{
     return Future.value(Isar.getInstance());
   }
 
+  Cuenta registerToIsarCuenta(RegisterCuenta dto){
+    return Cuenta(
+      dto.nombre, 
+      dto.estado, 
+      dto.total, 
+      id: Isar.autoIncrement,
+      );
+  }
+
   @override
   Future<Cuenta> actualizarCuenta(int idCuenta, UpdateCuenta updateCuenta) {
     // TODO: implement actualizarCuenta
@@ -30,9 +37,15 @@ class CuentaDatasourceIsar implements CuentaDatasource{
   }
 
   @override
-  Future<Cuenta> crearCuenta(RegisterCuenta registerCuenta) {
-    // TODO: implement crearCuenta
-    throw UnimplementedError();
+  Future<Cuenta> crearCuenta(RegisterCuenta registerCuenta) async{
+    try {
+      final isar = await db;
+      final cuenta = registerToIsarCuenta(registerCuenta);
+      isar.txnSync(() => isar.cuentas.putSync(cuenta));
+      return cuenta;
+    } catch (e) {
+      throw Error();
+    }
   }
 
   @override
