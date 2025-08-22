@@ -1,7 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:manejo_divisas/presentation/providers/cuenta/get_cuenta_provider.dart';
 
-class MainTitle extends StatelessWidget {
+class MainTitle extends ConsumerStatefulWidget {
   const MainTitle({super.key});
+
+  @override
+  createState() => _MainTitleState();
+}
+
+class _MainTitleState extends ConsumerState<MainTitle> {
+  
+  @override
+  void initState() {
+    super.initState();
+    ref.read(acountsProvider.notifier).getAcount(1);
+  }
+
 
   @override
   Widget build(BuildContext context) {

@@ -34,8 +34,7 @@ class CuentaRepositoryImpl implements CuentaRepository{
   }
 
   @override
-  Future<Cuenta> obtenerCuenta(int idCuenta) {
-    // TODO: implement obtenerCuenta
-    throw UnimplementedError();
+  Future<Cuenta> obtenerCuenta(int idCuenta){
+    return datasource.obtenerCuenta(idCuenta);
   }
 }

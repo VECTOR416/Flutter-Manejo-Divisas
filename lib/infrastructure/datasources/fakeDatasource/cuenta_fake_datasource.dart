@@ -6,7 +6,7 @@ import 'package:manejo_divisas/domain/entities/cuenta.dart';
 class CuentaFakeDatasource implements CuentaDatasource{
   @override
   Future<Cuenta> actualizarCuenta(int idCuenta, UpdateCuenta updateCuenta) async{
-    return Future.value(Cuenta('Principal', true, 100.0, id: 1));
+    return Cuenta('Principal', true, 100.0, id: 1);
   }
 
   @override
@@ -15,22 +15,22 @@ class CuentaFakeDatasource implements CuentaDatasource{
   }
 
   @override
-  Future<bool> eliminarCuenta(int idCuenta) {
-    return Future.value(true);
+  Future<bool> eliminarCuenta(int idCuenta) async{
+    return true;
   }
 
   @override
-  Future<List<Cuenta>> listarCuentas({int limit = 10, offset = 0}) {
+  Future<List<Cuenta>> listarCuentas({int limit = 10, offset = 0}) async{
     List<Cuenta> cuentasList = [
       Cuenta('Principal', true, 100.0, id: 1),
       Cuenta('Banco Ganadero', true, 100.0, id: 1),
       Cuenta('Banco BCP', true, 100.0, id: 1)
     ];
-    return Future.value(cuentasList);
+    return cuentasList;
   }
 
   @override
-  Future<Cuenta> obtenerCuenta(int idCuenta) {
-    return Future.value(Cuenta('Principal', true, 100.0, id: 1));
+  Future<Cuenta> obtenerCuenta(int idCuenta) async{ 
+    return Cuenta('Principal', true, 100.0, id: 1); 
   }
 }
