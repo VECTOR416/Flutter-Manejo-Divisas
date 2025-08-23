@@ -1,4 +1,4 @@
-package com.example.manejo_divisas
+package com.example.pruebas
 
 import io.flutter.embedding.android.FlutterActivity
 

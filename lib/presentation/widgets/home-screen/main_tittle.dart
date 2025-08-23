@@ -20,6 +20,7 @@ class _MainTitleState extends ConsumerState<MainTitle> {
 
   @override
   Widget build(BuildContext context) {
+    final usedAcount = ref.watch(acountsProvider);
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(24),
@@ -40,7 +41,7 @@ class _MainTitleState extends ConsumerState<MainTitle> {
               Column(
                 children: [
                   Text(
-                    'FinanceApp',
+                    usedAcount.nombre,
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,

@@ -17,11 +17,10 @@ typedef AcountCallback = Future<Cuenta> Function(int id);
 //* NOTIFICADOR QUE OBSERVA LA CUENTA
 class AcountNotifier extends StateNotifier<Cuenta>{
   AcountCallback getAcount;
-  AcountNotifier({required this.getAcount}): super(Cuenta("Defecto", true, 0, id: 0));
+  AcountNotifier({required this.getAcount}): super(Cuenta("Prueba", true, 0, id: 0));
 
   Future<void> loadAcount(int id) async{
     final Cuenta acount = await getAcount(id);
-    
     state = acount;
   }
 }

@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="manejo_divisas"
+        android:label="pruebas"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
