@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:manejo_divisas/domain/entities/cuenta.dart';
 import 'package:manejo_divisas/presentation/providers/cuenta/get_cuenta_provider.dart';
 
 class MainTitle extends ConsumerStatefulWidget {
@@ -12,15 +13,15 @@ class MainTitle extends ConsumerStatefulWidget {
 class _MainTitleState extends ConsumerState<MainTitle> {
   
   @override
-  void initState() {
+  void initState() async{
     super.initState();
-    ref.read(acountsProvider.notifier).getAcount(1);
+    ref.read(getAcountProvider.notifier).getAcount(1);
   }
 
 
   @override
   Widget build(BuildContext context) {
-    final usedAcount = ref.watch(acountsProvider);
+    final Cuenta? usedAcount = ref.watch(getAcountProvider);
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(24),
@@ -41,7 +42,7 @@ class _MainTitleState extends ConsumerState<MainTitle> {
               Column(
                 children: [
                   Text(
-                    usedAcount.nombre,
+                    (usedAcount != null) ? usedAcount.nombre: 'Sin Cuenta Alguna',
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
