@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:manejo_divisas/domain/entities/cuenta.dart';
 import 'package:manejo_divisas/presentation/providers/cuenta/get_cuenta_provider.dart';
 
 class MainTitle extends ConsumerStatefulWidget {
@@ -13,15 +12,17 @@ class MainTitle extends ConsumerStatefulWidget {
 class _MainTitleState extends ConsumerState<MainTitle> {
   
   @override
-  void initState() async{
+  void initState(){
     super.initState();
-    ref.read(getAcountProvider.notifier).getAcount(1);
+    ref.read(getAcountProvider.notifier).loadAcount(1);
   }
 
 
   @override
   Widget build(BuildContext context) {
-    final Cuenta? usedAcount = ref.watch(getAcountProvider);
+
+    final usedAcount = ref.watch(getAcountProvider);
+  
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(24),
