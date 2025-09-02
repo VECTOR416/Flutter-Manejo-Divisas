@@ -15,8 +15,6 @@ class AcountNotifier extends StateNotifier<Cuenta?>{
 
   Future<void> loadAcount(int accountId) async{
     final Cuenta acount = await getAcount(accountId);
-    print("====================PROVIDER===================");
-    print(acount.nombre);
     state = acount;
   }
 }
