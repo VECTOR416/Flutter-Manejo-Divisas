@@ -25,8 +25,8 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: CustomBottomNavigationBar(),
-      floatingActionButton: const CentralButton(), // <--- botón central aquí
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: const CentralButton(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked, // <--- botón central aquí
     );
   }
 }
